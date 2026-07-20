@@ -1,0 +1,85 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#35D0A5" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#35D0A5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#35D0A5" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#35D0A5" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ground -->
+  <rect width="1200" height="630" fill="#171F29"/>
+
+  <!-- faint instrument grid -->
+  <g stroke="#EDF1F4" stroke-opacity="0.05" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="240" y1="0" x2="240" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+  </g>
+
+  <!-- top accent hairline -->
+  <rect x="0" y="0" width="1200" height="4" fill="#35D0A5"/>
+
+  <!-- ============ RIGHT: signal -> brief graph ============ -->
+  <g>
+    <!-- edges to brief node (1030, 315) -->
+    <g stroke="url(#edge)" stroke-width="1.6">
+      <line x1="812" y1="150" x2="1030" y2="315"/>
+      <line x1="792" y1="232" x2="1030" y2="315"/>
+      <line x1="812" y1="315" x2="1030" y2="315"/>
+      <line x1="792" y1="398" x2="1030" y2="315"/>
+      <line x1="812" y1="480" x2="1030" y2="315"/>
+    </g>
+
+    <!-- signal nodes + labels -->
+    <g font-family="ui-monospace, Menlo, monospace" font-size="17" fill="#A2B0BB">
+      <circle cx="812" cy="150" r="5" fill="#A2B0BB"/><text x="798" y="155" text-anchor="end">test</text>
+      <circle cx="792" cy="232" r="5" fill="#A2B0BB"/><text x="778" y="237" text-anchor="end">telemetry</text>
+      <circle cx="812" cy="315" r="5" fill="#A2B0BB"/><text x="798" y="320" text-anchor="end">review</text>
+      <circle cx="792" cy="398" r="5" fill="#A2B0BB"/><text x="778" y="403" text-anchor="end">coverage</text>
+      <circle cx="812" cy="480" r="5" fill="#A2B0BB"/><text x="798" y="485" text-anchor="end">trace</text>
+    </g>
+
+    <!-- brief node (resolved) -->
+    <circle cx="1030" cy="315" r="60" fill="url(#glow)"/>
+    <circle cx="1030" cy="315" r="16" fill="#35D0A5"/>
+    <path d="M1023 315 l5 6 l9 -11" fill="none" stroke="#171F29" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1030" y="360" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="17" fill="#35D0A5">brief</text>
+  </g>
+
+  <!-- ============ LEFT: wordmark + thesis ============ -->
+  <!-- brand mark -->
+  <g transform="translate(80, 70)">
+    <circle cx="7" cy="8" r="6" fill="#A2B0BB"/>
+    <circle cx="7" cy="34" r="6" fill="#A2B0BB"/>
+    <circle cx="40" cy="21" r="8" fill="#35D0A5"/>
+    <path d="M13 11 L33 19 M13 31 L33 23" stroke="#A2B0BB" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="66" y="30" font-family="ui-monospace, Menlo, monospace" font-size="26" font-weight="600" fill="#EDF1F4" letter-spacing="0.5">Qualiber</text>
+  </g>
+
+  <!-- eyebrow -->
+  <text x="80" y="182" font-family="ui-monospace, Menlo, monospace" font-size="18" fill="#A2B0BB" letter-spacing="3">QUALGRAPH · BY QUALIBER</text>
+
+  <!-- thesis headline -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#EDF1F4">
+    <text x="78" y="258">Quality isn&#8217;t whether</text>
+    <text x="78" y="326">the tests passed. It&#8217;s</text>
+    <text x="78" y="394">whether the <tspan font-style="italic" fill="#35D0A5">decision</tspan></text>
+    <text x="78" y="462">was sound.</text>
+  </g>
+
+  <!-- tagline -->
+  <text x="80" y="536" font-family="ui-monospace, Menlo, monospace" font-size="19" fill="#66757F" letter-spacing="1.5">Evidence-backed quality briefs.</text>
+
+  <!-- url -->
+  <text x="80" y="588" font-family="ui-monospace, Menlo, monospace" font-size="19" fill="#35D0A5" letter-spacing="1.5">qualiber.ai</text>
+</svg>

@@ -1,0 +1,404 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ── Formspree ────────────────────────────────────────────────────────────
+// Replace with your real endpoint after creating a form at formspree.io.
+// Example: https://formspree.io/f/xdkoqwer
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeeykpae';
+---
+
+<Base>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="5" cy="6" r="2.4" fill="currentColor" opacity="0.5"></circle>
+          <circle cx="5" cy="18" r="2.4" fill="currentColor" opacity="0.5"></circle>
+          <circle cx="19" cy="12" r="3" fill="#35D0A5"></circle>
+          <path d="M6.8 7 16.4 11M6.8 17 16.4 13" stroke="currentColor" stroke-width="1.3" opacity="0.55"></path>
+        </svg>
+        Qualiber
+      </a>
+      <div class="nav-links">
+        <a class="hide-sm" href="#product">Product</a>
+        <a class="hide-sm" href="#approach">Approach</a>
+        <a class="hide-sm" href="#company">Company</a>
+        <a class="nav-cta" href="#contact">Request a demo</a>
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle color theme" title="Toggle theme">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <span id="top"></span>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Qualgraph · by Qualiber</span>
+        <h1>Quality isn't whether the tests passed. It's whether the <em>decision</em> was sound.</h1>
+        <p class="lede">Qualgraph turns the test, telemetry, and review signals your team already produces into <b>evidence-backed briefs</b> — so every quality call is grounded in what actually happened, not what someone assumed.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Request a demo →</a>
+          <a class="btn btn-ghost" href="#approach">See the approach</a>
+        </div>
+      </div>
+      <div class="hero-panel" id="panel">
+        <span class="panel-tag"><span class="dot">●</span> signal → verdict</span>
+        <canvas id="graph"></canvas>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRINCIPLES STRIP -->
+  <section class="strip">
+    <div class="wrap strip-grid">
+      <div class="strip-item">
+        <div class="strip-k">Grounded</div>
+        <div class="strip-v">Every claim is <b>assembled from your real signals</b> and cites them. No signal, no claim.</div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-k">Honest</div>
+        <div class="strip-v">What can't be shown is reported as <b>absence</b> — never guessed, never inflated.</div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-k">Defensible</div>
+        <div class="strip-v">A brief you can <b>stand behind in a review</b>, an audit, or a postmortem.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE GAP -->
+  <section class="section" id="product">
+    <div class="wrap gap-grid reveal">
+      <div>
+        <span class="eyebrow">The gap</span>
+        <h2>A green checkmark is not a <em>verdict</em>.</h2>
+        <p class="body">Tests tell you a suite passed. Dashboards tell you coverage moved a point. Neither tells you whether the decision to ship — or to sign off — was <i>faithful to the evidence in front of it</i>.</p>
+        <p class="body">The hardest questions in QA all live in that gap. They're the ones that surface after release, in the retro, when someone asks how it got through.</p>
+      </div>
+      <ul class="faillist" aria-label="Questions testing alone can't answer">
+        <li><span class="q">Q_01</span><span>Did the review actually <b>weigh what the data already knew?</b></span></li>
+        <li><span class="q">Q_02</span><span>Which signals were <b>present but never considered?</b></span></li>
+        <li><span class="q">Q_03</span><span>Where did the call <b>drift from the evidence</b> — and why?</span></li>
+        <li><span class="q">Q_04</span><span>Could you <b>reconstruct the reasoning</b> six months from now?</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- THE SHIFT / APPROACH -->
+  <section class="section" id="approach">
+    <div class="wrap reveal">
+      <span class="eyebrow">The shift</span>
+      <h2>From <em>did it pass</em> to <em>is it faithful</em>.</h2>
+      <p class="body">Qualgraph reframes quality around the decision, not the checkmark. It reads the signals you already generate, connects them to the calls your team made, and produces a brief that shows where judgment matched the evidence — and where it didn't. Three things hold that promise together:</p>
+
+      <div class="pillars">
+        <article class="pillar">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5h13M4 12h9M4 19h13"></path><path d="M18.5 16.5 21 19l-2.5 2.5"></path><circle cx="20" cy="9" r="2.2"></circle></svg>
+          <div class="pk">01 — Capability</div>
+          <h3>Evidence-backed briefs</h3>
+          <p>Each brief is assembled from your real test, telemetry, and review signals — and cites them, line by line. Nothing is asserted that the evidence can't support.</p>
+        </article>
+        <article class="pillar">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12a9 9 0 0 1 18 0 9 9 0 0 1-18 0Z"></path><path d="M12 7v5l3.5 2"></path></svg>
+          <div class="pk">02 — Capability</div>
+          <h3>Decision fidelity</h3>
+          <p>See exactly where a quality decision tracked the evidence, and where it drifted — turning "we reviewed it" into something you can point to and measure.</p>
+        </article>
+        <article class="pillar">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"></path><path d="M9 12l2 2 4-4"></path></svg>
+          <div class="pk">03 — Capability</div>
+          <h3>Honest by design</h3>
+          <p>Qualgraph never fills a gap with a guess. When a signal is missing, the brief says so plainly — so trust is earned, not assumed.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="section">
+    <div class="wrap reveal">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Built for the people who own the <em>quality bar</em>.</h2>
+      <div class="aud-grid">
+        <div class="aud">
+          <div class="role">QA &amp; Quality Leaders</div>
+          <h4>Prove the bar is real.</h4>
+          <p>Move past "we tested it" to evidence you can defend — where decisions held, where they slipped, and what the signals were telling you all along.</p>
+        </div>
+        <div class="aud">
+          <div class="role">Engineering Leaders</div>
+          <h4>Ship fast without shipping blind.</h4>
+          <p>Keep velocity while making every sign-off traceable. When something gets through, you can reconstruct exactly how — and close the gap.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY -->
+  <section class="section company" id="company">
+    <div class="wrap reveal">
+      <span class="eyebrow">The company</span>
+      <h2>Qualiber builds the instruments QA has been <em>missing</em>.</h2>
+      <p class="body">Testing tells you the parts work. It was never designed to tell you whether the judgment around them was sound. Qualiber exists to close that gap — starting with Qualgraph, and continuing across a family of products aimed squarely at the parts of quality that testing alone was never going to solve.</p>
+      <div class="roadmap">
+        <span class="live">Qualgraph — available now</span>
+        <span>More, in build</span>
+        <span>All aimed at one thing: quality that holds up</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap contact-grid reveal">
+      <div class="contact-side">
+        <span class="eyebrow">Get in touch</span>
+        <h2>See Qualgraph on <em>your</em> signals.</h2>
+        <p class="body">Tell us a little about your team and the quality problem you're wrestling with. We'll set up a walkthrough grounded in the kind of evidence you actually work with.</p>
+        <div class="contact-meta">
+          <div>→ Live demo, tailored to your stack</div>
+          <div>→ No obligation, no slide deck</div>
+          <div><a href="mailto:hello@qualiber.ai">hello@qualiber.ai</a></div>
+        </div>
+      </div>
+      <form class="form" id="demoForm" method="POST" action={FORMSPREE_ENDPOINT} novalidate>
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="f-email">Work email</label>
+          <input id="f-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="f-company">Company</label>
+          <input id="f-company" name="company" type="text" placeholder="Company name" autocomplete="organization" />
+        </div>
+        <div class="field">
+          <label for="f-msg">What quality problem are you wrestling with? <span class="opt">(optional)</span></label>
+          <textarea id="f-msg" name="message" placeholder="A sentence or two is plenty."></textarea>
+        </div>
+        <!-- honeypot: bots fill this, humans never see it -->
+        <div class="hp" aria-hidden="true">
+          <label for="f-website">Leave this field empty</label>
+          <input id="f-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <button class="btn btn-primary" type="submit">Request a demo →</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+        <p class="form-note" id="formNote">We reply from hello@qualiber.ai — usually within a day.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="#top">
+          <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="5" cy="6" r="2.4" fill="currentColor" opacity="0.5"></circle>
+            <circle cx="5" cy="18" r="2.4" fill="currentColor" opacity="0.5"></circle>
+            <circle cx="19" cy="12" r="3" fill="#35D0A5"></circle>
+            <path d="M6.8 7 16.4 11M6.8 17 16.4 13" stroke="currentColor" stroke-width="1.3" opacity="0.55"></path>
+          </svg>
+          Qualiber
+        </a>
+        <p class="tag">Instruments for quality that holds up. Qualgraph is the first.</p>
+      </div>
+      <div class="legal">
+        Qualgraph™ is a product of Qualiber&nbsp;LLC.<br />
+        © 2026 Qualiber&nbsp;LLC. All rights reserved.<br />
+        <a href="mailto:hello@qualiber.ai">hello@qualiber.ai</a> · <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+</Base>
+
+<script>
+  // ── theme toggle (persisted) ─────────────────────────────────────────────
+  const root = document.documentElement;
+  const btn = document.getElementById('themeBtn');
+  btn?.addEventListener('click', () => {
+    let cur = root.getAttribute('data-theme');
+    if (!cur) cur = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('qb-theme', next); } catch (e) {}
+  });
+
+  // ── scroll reveal ────────────────────────────────────────────────────────
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach((r) => r.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      },
+      { threshold: 0.16 },
+    );
+    reveals.forEach((r) => io.observe(r));
+  }
+
+  // ── demo form (Formspree AJAX) ───────────────────────────────────────────
+  const form = document.getElementById('demoForm') as HTMLFormElement | null;
+  const statusEl = document.getElementById('formStatus');
+  const noteEl = document.getElementById('formNote');
+  form?.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const action = form.getAttribute('action') || '';
+    const submitBtn = form.querySelector('button[type=submit]') as HTMLButtonElement;
+    const show = (msg: string, ok: boolean) => {
+      if (!statusEl) return;
+      statusEl.textContent = msg;
+      statusEl.className = 'form-status ' + (ok ? 'ok' : 'err');
+      statusEl.hidden = false;
+    };
+
+    if (action.includes('YOUR_FORM_ID')) {
+      show('Demo mode — connect a Formspree endpoint to go live.', false);
+      return;
+    }
+    const email = (form.querySelector('#f-email') as HTMLInputElement)?.value.trim();
+    const name = (form.querySelector('#f-name') as HTMLInputElement)?.value.trim();
+    if (!name || !email) { show('Please add your name and work email.', false); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    try {
+      const res = await fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        form.reset();
+        submitBtn.textContent = '✓ Received';
+        noteEl?.setAttribute('hidden', '');
+        show("Thanks — we'll be in touch from hello@qualiber.ai shortly.", true);
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request a demo →';
+        show('Something went wrong. Email hello@qualiber.ai and we’ll sort it.', false);
+      }
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request a demo →';
+      show('Network error. Email hello@qualiber.ai and we’ll sort it.', false);
+    }
+  });
+
+  // ── hero graph animation ─────────────────────────────────────────────────
+  const canvas = document.getElementById('graph') as HTMLCanvasElement | null;
+  const panel = document.getElementById('panel');
+  if (canvas && panel) {
+    const ctx = canvas.getContext('2d')!;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const labels = ['test', 'telemetry', 'review', 'coverage', 'trace', 'log'];
+    let W = 0, H = 0;
+    let signals: { x: number; y: number; label: string; seed: number }[] = [];
+    let brief = { x: 0, y: 0 };
+
+    const layout = () => {
+      const r = panel.getBoundingClientRect();
+      W = r.width; H = r.height;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      signals = labels.map((lb, i) => {
+        const n = labels.length;
+        return {
+          x: W * (0.14 + 0.16 * (i % 2)),
+          y: H * (0.14 + (0.72 * i) / (n - 1)),
+          label: lb,
+          seed: i * 1.7,
+        };
+      });
+      brief = { x: W * 0.78, y: H * 0.5 };
+    };
+    layout();
+    window.addEventListener('resize', layout);
+
+    const cssVar = (name: string) => getComputedStyle(root).getPropertyValue(name).trim();
+    const accent = () => cssVar('--accent') || '#35D0A5';
+    const inkColor = () => getComputedStyle(document.body).color;
+
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const t0 = performance.now();
+
+    const frame = (now: number) => {
+      const t = (now - t0) / 1000;
+      ctx.clearRect(0, 0, W, H);
+      const ac = accent();
+      const cycle = reduceMotion ? 1 : (t % 4.5) / 4.5;
+
+      signals.forEach((s, i) => {
+        const prog = reduceMotion ? 1 : Math.max(0, Math.min(1, (cycle - i * 0.06) * 2.4));
+        const mx = s.x + (brief.x - s.x) * prog;
+        const my = s.y + (brief.y - s.y) * prog;
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(mx, my);
+        ctx.strokeStyle = ac;
+        ctx.globalAlpha = 0.18 + 0.2 * prog;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        if (!reduceMotion && prog > 0 && prog < 1) {
+          ctx.beginPath();
+          ctx.arc(mx, my, 2.4, 0, Math.PI * 2);
+          ctx.fillStyle = ac; ctx.globalAlpha = 0.9; ctx.fill();
+        }
+      });
+      ctx.globalAlpha = 1;
+
+      signals.forEach((s) => {
+        const drift = reduceMotion ? 0 : Math.sin(t * 0.8 + s.seed) * 2;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y + drift, 4, 0, Math.PI * 2);
+        ctx.fillStyle = inkColor(); ctx.globalAlpha = 0.55; ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.font = '10px ui-monospace, Menlo, monospace';
+        ctx.fillStyle = inkColor(); ctx.globalAlpha = 0.5;
+        ctx.textAlign = 'right';
+        ctx.fillText(s.label, s.x - 9, s.y + drift + 3.5);
+        ctx.globalAlpha = 1;
+      });
+
+      const resolve = reduceMotion ? 1 : Math.max(0, (cycle - 0.62) / 0.38);
+      const pulse = reduceMotion ? 0.5 : 0.5 + 0.5 * Math.sin(t * 2);
+      const glowR = 16 + resolve * 12 + pulse * 3 * resolve;
+      const grad = ctx.createRadialGradient(brief.x, brief.y, 2, brief.x, brief.y, glowR);
+      grad.addColorStop(0, ac);
+      grad.addColorStop(1, 'rgba(53,208,165,0)');
+      ctx.globalAlpha = 0.15 + 0.45 * resolve;
+      ctx.beginPath(); ctx.arc(brief.x, brief.y, glowR, 0, Math.PI * 2);
+      ctx.fillStyle = grad; ctx.fill();
+      ctx.globalAlpha = 1;
+
+      ctx.beginPath(); ctx.arc(brief.x, brief.y, 9, 0, Math.PI * 2);
+      ctx.fillStyle = ac; ctx.fill();
+      if (resolve > 0.5) {
+        ctx.strokeStyle = cssVar('--bg') || '#171F29';
+        ctx.lineWidth = 1.8; ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(brief.x - 4, brief.y);
+        ctx.lineTo(brief.x - 1, brief.y + 3.2);
+        ctx.lineTo(brief.x + 4.5, brief.y - 3);
+        ctx.stroke();
+      }
+      ctx.font = '10px ui-monospace, Menlo, monospace';
+      ctx.fillStyle = ac; ctx.textAlign = 'center';
+      ctx.fillText('brief', brief.x, brief.y + 26);
+
+      if (!reduceMotion) requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
+</script>
