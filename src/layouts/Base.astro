@@ -30,9 +30,10 @@ const ogImage = new URL('/og.png', site).href;
     <meta name="theme-color" content="#171F29" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#F1F4F4" media="(prefers-color-scheme: light)" />
 
-    <!-- Favicon -->
+    <!-- Icons -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -43,12 +44,14 @@ const ogImage = new URL('/og.png', site).href;
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Qualiber — Quality isn't whether the tests passed. It's whether the decision was sound." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Qualiber — Quality isn't whether the tests passed. It's whether the decision was sound." />
 
     <!-- Apply saved theme before paint to avoid a flash -->
     <script is:inline>

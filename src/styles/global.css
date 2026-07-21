@@ -13,7 +13,8 @@
   --bg-sunk:   #121922;
   --ink:       #EDF1F4;
   --ink-soft:  #A2B0BB;
-  --ink-faint: #66757F;
+  /* --ink-faint carries small mono text (labels, legal); kept at >=4.5:1 for WCAG AA */
+  --ink-faint: #8A98A3;
   --rule:      rgba(237,241,244,0.11);
   --rule-strong: rgba(237,241,244,0.22);
   --accent:    #35D0A5;
@@ -39,13 +40,14 @@
     --bg-sunk:   #E7ECEC;
     --ink:       #0E161B;
     --ink-soft:  #45555F;
-    --ink-faint: #7C8B94;
+    --ink-faint: #5E6C75;
     --rule:      rgba(14,22,27,0.12);
     --rule-strong: rgba(14,22,27,0.24);
-    --accent:    #0F9E7C;
-    --accent-dim:#0C7E63;
-    --accent-glow: rgba(15,158,124,0.40);
-    --accent-wash: rgba(15,158,124,0.07);
+    /* darker jade on light ground so small accent text clears 4.5:1 */
+    --accent:    #0B7A5F;
+    --accent-dim:#085C47;
+    --accent-glow: rgba(11,122,95,0.40);
+    --accent-wash: rgba(11,122,95,0.07);
     color-scheme: light;
   }
 }
@@ -53,7 +55,7 @@
 /* explicit toggle overrides must win in both directions */
 :root[data-theme="dark"] {
   --bg:#171F29; --bg-raised:#1F2A36; --bg-sunk:#121922;
-  --ink:#EDF1F4; --ink-soft:#A2B0BB; --ink-faint:#66757F;
+  --ink:#EDF1F4; --ink-soft:#A2B0BB; --ink-faint:#8A98A3;
   --rule:rgba(237,241,244,0.11); --rule-strong:rgba(237,241,244,0.22);
   --accent:#35D0A5; --accent-dim:#1E8E70;
   --accent-glow:rgba(53,208,165,0.55); --accent-wash:rgba(53,208,165,0.08);
@@ -61,10 +63,10 @@
 }
 :root[data-theme="light"] {
   --bg:#F1F4F4; --bg-raised:#FBFCFC; --bg-sunk:#E7ECEC;
-  --ink:#0E161B; --ink-soft:#45555F; --ink-faint:#7C8B94;
+  --ink:#0E161B; --ink-soft:#45555F; --ink-faint:#5E6C75;
   --rule:rgba(14,22,27,0.12); --rule-strong:rgba(14,22,27,0.24);
-  --accent:#0F9E7C; --accent-dim:#0C7E63;
-  --accent-glow:rgba(15,158,124,0.40); --accent-wash:rgba(15,158,124,0.07);
+  --accent:#0B7A5F; --accent-dim:#085C47;
+  --accent-glow:rgba(11,122,95,0.40); --accent-wash:rgba(11,122,95,0.07);
   color-scheme: light;
 }
 
@@ -231,7 +233,7 @@ body {
 @media (max-width: 720px){ .aud-grid { grid-template-columns: 1fr; } }
 .aud { border: 1px solid var(--rule); border-radius: 3px; padding: 1.7rem 1.6rem; background: var(--bg-raised); }
 .aud .role { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-.aud h4 { font-family: var(--font-serif); font-weight: 400; font-size: 1.35rem; margin: 0.9rem 0 0.5rem; }
+.aud h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.35rem; margin: 0.9rem 0 0.5rem; }
 .aud p { color: var(--ink-soft); font-size: 0.96rem; margin: 0; }
 
 /* company */
@@ -297,6 +299,7 @@ body {
 /* 404 */
 .notfound { min-height: 62vh; display: grid; place-content: center; text-align: center; gap: 1rem; padding: 3rem var(--pad); }
 .notfound .code { font-family: var(--font-mono); color: var(--accent); letter-spacing: 0.3em; font-size: 0.9rem; }
+.notfound .body { color: var(--ink-soft); max-width: 46ch; margin: 0 auto; }
 .notfound h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2rem,5vw,3.4rem); margin: 0; }
 
 /* scroll reveal */
