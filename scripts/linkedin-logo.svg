@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Full-bleed square (no rounded corners — LinkedIn rounds it itself). -->
+  <rect width="400" height="400" fill="#171F29"/>
+  <!-- Qualiber mark, centred with safe padding. 48-unit mark scaled 6.5x. -->
+  <g transform="translate(50.5 50.5) scale(6.5)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="23" cy="23" r="15" stroke="#EDF1F4" stroke-width="3"/>
+    <path d="M10.5 23 L14.2 17.6 L17.8 27.4 L21.4 19.4 L24.8 24.6 L28 23" stroke="#8B96A0" stroke-width="2.5"/>
+    <path d="M28.5 23 L39 39" stroke="#35D0A5" stroke-width="3"/>
+    <circle cx="28.4" cy="23" r="3.9" fill="#35D0A5" stroke="none"/>
+  </g>
+</svg>
