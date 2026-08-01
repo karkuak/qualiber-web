@@ -58,12 +58,12 @@
 
   <!-- ============ LEFT: wordmark + thesis ============ -->
   <!-- brand mark -->
-  <g transform="translate(80, 70)">
-    <circle cx="7" cy="8" r="6" fill="#A2B0BB"/>
-    <circle cx="7" cy="34" r="6" fill="#A2B0BB"/>
-    <circle cx="40" cy="21" r="8" fill="#35D0A5"/>
-    <path d="M13 11 L33 19 M13 31 L33 23" stroke="#A2B0BB" stroke-width="2.4" stroke-linecap="round"/>
-    <text x="66" y="30" font-family="ui-monospace, Menlo, monospace" font-size="26" font-weight="600" fill="#EDF1F4" letter-spacing="0.5">Qualiber</text>
+  <g transform="translate(78, 64)">
+    <circle cx="23" cy="23" r="15" fill="none" stroke="#EDF1F4" stroke-width="3"/>
+    <path d="M10.5 23 L14.2 17.6 L17.8 27.4 L21.4 19.4 L24.8 24.6 L28 23" fill="none" stroke="#A2B0BB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.5 23 L39 39" fill="none" stroke="#35D0A5" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="28.4" cy="23" r="3.9" fill="#35D0A5"/>
+    <text x="60" y="33" font-family="ui-monospace, Menlo, monospace" font-size="26" font-weight="600" fill="#EDF1F4" letter-spacing="0.5">Qualiber</text>
   </g>
 
   <!-- eyebrow -->

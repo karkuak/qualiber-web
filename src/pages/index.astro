@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Mark from '../components/Mark.astro';
 
 // ── Formspree ────────────────────────────────────────────────────────────
 // Replace with your real endpoint after creating a form at formspree.io.
@@ -12,12 +13,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeeykpae';
   <nav class="nav">
     <div class="nav-inner">
       <a class="brand" href="#top">
-        <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="5" cy="6" r="2.4" fill="currentColor" opacity="0.5"></circle>
-          <circle cx="5" cy="18" r="2.4" fill="currentColor" opacity="0.5"></circle>
-          <circle cx="19" cy="12" r="3" fill="#35D0A5"></circle>
-          <path d="M6.8 7 16.4 11M6.8 17 16.4 13" stroke="currentColor" stroke-width="1.3" opacity="0.55"></path>
-        </svg>
+        <Mark />
         Qualiber
       </a>
       <div class="nav-links">

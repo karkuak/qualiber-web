@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Standalone Qualiber mark (transparent, for light backgrounds).
+       Ring #12181F ink · signal #8B96A0 grey · verdict node+tail #35D0A5 jade. -->
+  <circle cx="23" cy="23" r="15" stroke="#12181F" stroke-width="3"/>
+  <path d="M10.5 23 L14.2 17.6 L17.8 27.4 L21.4 19.4 L24.8 24.6 L28 23" stroke="#8B96A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M28.5 23 L39 39" stroke="#35D0A5" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="28.4" cy="23" r="3.9" fill="#35D0A5"/>
+</svg>

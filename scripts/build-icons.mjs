@@ -20,4 +20,10 @@ await sharp(svg, { density: 768 })
   .png()
   .toFile(join(pub, 'apple-touch-icon.png'));
 
-console.log('wrote favicon-32.png + apple-touch-icon.png');
+// Large icon for app / manifest / press use.
+await sharp(svg, { density: 1024 })
+  .resize(512, 512)
+  .png()
+  .toFile(join(pub, 'icon-512.png'));
+
+console.log('wrote favicon-32.png + apple-touch-icon.png + icon-512.png');
