@@ -31,4 +31,11 @@ await sharp(lightSvg, { density: 400 })
   .png()
   .toFile(join(pub, 'qualiber-linkedin-logo-light.png'));
 
-console.log('wrote qualiber-linkedin-logo.png + qualiber-linkedin-logo-light.png');
+// Company page cover / banner — LinkedIn spec 1128×191 (rendered 2× for retina).
+const bannerSvg = readFileSync(join(here, 'linkedin-banner.svg'));
+await sharp(bannerSvg, { density: 220 })
+  .resize(2256, 382)
+  .png()
+  .toFile(join(pub, 'qualiber-linkedin-banner.png'));
+
+console.log('wrote qualiber-linkedin-logo.png + qualiber-linkedin-logo-light.png + qualiber-linkedin-banner.png');

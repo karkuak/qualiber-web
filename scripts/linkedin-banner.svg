@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1128 191">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#35D0A5" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#35D0A5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#35D0A5" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#35D0A5" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ground -->
+  <rect width="1128" height="191" fill="#171F29"/>
+
+  <!-- faint instrument grid -->
+  <g stroke="#EDF1F4" stroke-opacity="0.05" stroke-width="1">
+    <line x1="0" y1="48" x2="1128" y2="48"/>
+    <line x1="0" y1="96" x2="1128" y2="96"/>
+    <line x1="0" y1="144" x2="1128" y2="144"/>
+    <line x1="376" y1="0" x2="376" y2="191"/>
+    <line x1="752" y1="0" x2="752" y2="191"/>
+    <line x1="940" y1="0" x2="940" y2="191"/>
+  </g>
+
+  <!-- top accent hairline -->
+  <rect x="0" y="0" width="1128" height="3" fill="#35D0A5"/>
+
+  <!-- ===== right: signal -> verdict motif ===== -->
+  <g>
+    <g stroke="url(#edge)" stroke-width="1.4">
+      <line x1="872" y1="52" x2="1024" y2="96"/>
+      <line x1="858" y1="76" x2="1024" y2="96"/>
+      <line x1="868" y1="100" x2="1024" y2="96"/>
+      <line x1="856" y1="122" x2="1024" y2="96"/>
+      <line x1="874" y1="146" x2="1024" y2="96"/>
+    </g>
+    <g fill="#8B96A0">
+      <circle cx="872" cy="52" r="3.5"/>
+      <circle cx="858" cy="76" r="3.5"/>
+      <circle cx="868" cy="100" r="3.5"/>
+      <circle cx="856" cy="122" r="3.5"/>
+      <circle cx="874" cy="146" r="3.5"/>
+    </g>
+    <!-- verdict node -->
+    <circle cx="1024" cy="96" r="34" fill="url(#glow)"/>
+    <circle cx="1024" cy="96" r="12" fill="#35D0A5"/>
+    <path d="M1018.5 96 l4 5 l7 -9" fill="none" stroke="#171F29" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ===== centre-left: wordmark + thesis (clear of the bottom-left logo) ===== -->
+  <text x="286" y="60" font-family="Menlo, ui-monospace, monospace" font-size="14" fill="#8B96A0" letter-spacing="3.5">QUALIBER · QUALGRAPH</text>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="33" fill="#EDF1F4">
+    <text x="284" y="108">Quality isn&#8217;t a checkmark.</text>
+    <text x="284" y="150">It&#8217;s a <tspan font-style="italic" fill="#35D0A5">verdict</tspan>.</text>
+  </g>
+</svg>
