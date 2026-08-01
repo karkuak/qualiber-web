@@ -118,8 +118,8 @@ body {
   max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad);
   height: 66px; display: flex; align-items: center; justify-content: space-between;
 }
-.brand { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; font-size: 0.98rem; }
-.brand .mark { width: 22px; height: 22px; flex: none; }
+.brand { display: flex; align-items: center; gap: 0.62rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; font-size: 1.15rem; }
+.brand .mark { width: 28px; height: 28px; flex: none; }
 .nav-links { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.2rem); }
 .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 0.9rem; font-family: var(--font-mono); letter-spacing: 0.02em; transition: color .2s; }
 .nav-links a:hover { color: var(--ink); }
