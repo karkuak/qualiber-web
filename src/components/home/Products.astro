@@ -1,6 +1,7 @@
 ---
-// Product copy for all three cards is Karthik's supplied text (spelled "Qualgraph" to match
-// the rest of the site). Status chips are intentionally omitted for now.
+// Product cards share one structure: descriptor, summary, three points, closing note.
+// Copy is condensed from Karthik's supplied text — every claim and caveat is his; nothing new.
+// Status chips are intentionally omitted for now.
 ---
 <section class="section" id="products">
   <div class="wrap reveal">
@@ -11,21 +12,28 @@
       <article class="product-card">
         <div class="product-head">
           <h3>Qualgraph</h3>
+          <a class="card-link" href="/qualgraph">Learn more →</a>
         </div>
-        <p>Teams have requirements, test results, bug reports and application data spread across different tools. Connecting that information takes time, yet the questions are simple: What have we verified? Where are the gaps? What should we check next?</p>
-        <p>Qualgraph helps answer those questions by checking recorded application behavior against agreed rules and bringing supported evidence together into a clear review. It shows what was checked, what was found and where more evidence is needed.</p>
-        <p>It also retains reviewed findings and quality history, helping teams compare results over time and carry useful knowledge into future reviews. AI can assist with analysis and explanation. People remain responsible for decisions.</p>
-        <a class="card-link" href="/qualgraph">Learn more about Qualgraph →</a>
+        <p class="product-tag">Evidence-backed quality reviews.</p>
+        <p class="product-sum">Checks recorded application behavior against agreed rules and brings supported evidence from across your tools into one clear review.</p>
+        <ul class="card-list">
+          <li>Shows what was checked, what was found and where more evidence is needed</li>
+          <li>Answers what you have verified, where the gaps are and what to check next</li>
+          <li>Retains reviewed findings and quality history to compare results over time</li>
+        </ul>
+        <p class="card-note"><span>Decisions</span> AI assists with analysis and explanation. People remain responsible for decisions.</p>
       </article>
 
       <article class="product-card">
         <div class="product-head">
           <h3>Warrant</h3>
         </div>
-        <p>Warrant focuses on AI systems that make or recommend decisions. It helps businesses answer two questions:</p>
+        <p class="product-tag">Oversight for AI decisions.</p>
+        <p class="product-sum">For AI systems that make or recommend decisions: shows how reliable the checks are, and what the AI is authorized to do.</p>
         <ul class="card-list">
-          <li><b>How reliable are the checks on the AI’s decisions?</b> Warrant measures how closely an AI checker agrees with the organization’s experts, and whether that agreement changes when the model changes.</li>
-          <li><b>What is the AI authorized to do?</b> Warrant records the scope of its permission, who approved it, when it expires and the supporting evidence, so an auditor can review the record independently.</li>
+          <li>Measures how closely an AI checker agrees with your experts, and whether that changes when the model changes</li>
+          <li>Records the AI’s scope of permission, who approved it, when it expires and the supporting evidence</li>
+          <li>Gives auditors a record they can review independently</li>
         </ul>
         <p class="card-note"><span>Ownership</span> The organization runs Warrant and owns the results.</p>
       </article>
@@ -34,8 +42,14 @@
         <div class="product-head">
           <h3>Reality Lab</h3>
         </div>
-        <p>Reality Lab is a controlled testing environment being developed to help teams see how software behaves in realistic situations, including when things go wrong. It runs defined scenarios and records what happened, giving teams evidence they can inspect to understand failures and check fixes. It complements Qualgraph and Warrant by providing a place to test the products and the checks themselves.</p>
-        <p class="card-note"><span>Today</span> Its use is limited to controlled development testing; broader enterprise simulation and independent certification remain future capabilities.</p>
+        <p class="product-tag">Realistic, controlled testing.</p>
+        <p class="product-sum">Shows how software behaves in realistic situations, including when things go wrong, with evidence teams can inspect.</p>
+        <ul class="card-list">
+          <li>Runs defined scenarios and records what happened</li>
+          <li>Helps teams understand failures and check fixes</li>
+          <li>Provides a place to test Qualgraph, Warrant and the checks themselves</li>
+        </ul>
+        <p class="card-note"><span>Today</span> Limited to controlled development testing. Broader enterprise simulation and independent certification remain future capabilities.</p>
       </article>
     </div>
 

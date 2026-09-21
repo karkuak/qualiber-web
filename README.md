@@ -135,7 +135,7 @@ policy in the same change.
 
 ## Company / legal notes
 
-- Footer attributes the product to **Qualiber LLC** and marks **Qualgraph™** (™ is fine
-  pre-registration; use ® only after a granted USPTO mark).
+- The footer carries only the © Qualiber LLC line (the Qualgraph™ product attribution was removed
+  when the site became a company page). ™ is fine pre-registration; use ® only after a granted USPTO mark.
 - Register/hold `qualiber.ai` under the LLC with WHOIS privacy.
 - **Do not** add a "Patent pending" line until a provisional is actually filed.
