@@ -4,6 +4,7 @@
 // Colours are parameters, so one artwork serves every ground:
 //   ink    — the Q ring + wordmark
 //   accent — the orbit, node and sparkle (the site's --accent on the web)
+//   signal — the grey zigzag (the site's --ink-faint on the web)
 // Consumed by the Astro components (src/components/Logo*.astro) and by the
 // asset build scripts in /scripts.
 
@@ -13,25 +14,23 @@ const ORBIT = 'M 928 250 C 926 250, 924 250, 922 250 C 920 250, 918 250, 917 251
 const WORD = 'M 689 20 C 670 22, 666 46, 683 53 C 697 58, 711 51, 711 37 C 711 26, 702 19, 689 20 M 621 30 C 619 30, 619 31, 619 37 C 618 48, 619 169, 619 170 C 620 172, 620 172, 635 172 C 649 172, 649 172, 650 170 C 651 169, 651 34, 650 32 C 650 31, 649 30, 648 29 C 646 29, 622 29, 621 30 M 735 29 C 734 30, 733 31, 733 32 C 732 33, 732 168, 733 170 C 733 172, 734 172, 747 172 C 762 172, 762 172, 762 167 C 762 163, 764 163, 768 167 C 792 184, 831 172, 842 142 C 861 93, 812 46, 769 73 C 767 75, 765 75, 764 74 C 764 73, 764 73, 764 52 C 763 26, 765 29, 748 29 C 741 29, 735 29, 735 29 M 269 34 C 228 37, 198 74, 204 113 C 208 142, 230 165, 260 172 C 265 174, 266 174, 272 180 C 280 188, 285 192, 290 195 C 312 207, 339 205, 354 189 C 357 186, 357 185, 352 179 C 343 169, 343 169, 338 172 C 329 180, 318 181, 308 174 C 304 171, 304 170, 310 167 C 371 140, 363 52, 298 36 C 290 34, 279 33, 269 34 M 272 61 C 238 66, 224 111, 250 135 C 272 156, 308 146, 316 116 C 325 86, 302 57, 272 61 M 908 66 C 842 72, 839 162, 904 174 C 924 177, 946 172, 958 160 C 962 156, 962 156, 952 147 C 944 139, 944 139, 940 142 C 926 153, 904 152, 895 140 C 890 134, 889 131, 892 129 C 892 129, 908 129, 929 129 C 970 128, 967 129, 968 126 C 969 125, 969 116, 968 112 C 964 82, 939 63, 908 66 M 535 66 C 525 67, 515 70, 507 74 C 497 79, 497 79, 502 89 C 509 100, 509 100, 514 97 C 534 85, 558 89, 562 104 C 563 109, 563 109, 546 109 C 514 109, 500 115, 495 133 C 484 165, 531 189, 561 166 C 563 164, 565 164, 565 167 C 566 172, 565 172, 580 172 C 593 172, 594 172, 594 169 C 595 168, 594 109, 594 106 C 591 77, 569 63, 535 66 M 1045 66 C 1036 67, 1029 70, 1022 75 C 1019 78, 1018 77, 1017 73 C 1017 68, 1017 68, 1002 68 C 990 68, 990 68, 988 70 C 988 71, 987 167, 988 169 C 989 172, 989 172, 1004 172 C 1021 172, 1019 176, 1019 144 C 1019 117, 1019 117, 1020 112 C 1023 101, 1035 92, 1047 94 C 1052 95, 1052 94, 1052 79 C 1052 65, 1052 65, 1045 66 M 681 68 C 679 68, 677 69, 677 70 C 676 71, 676 169, 677 170 C 678 172, 677 172, 692 172 C 707 172, 706 172, 707 170 C 708 169, 708 166, 708 118 C 708 65, 708 69, 706 69 C 705 68, 684 68, 681 68 M 372 69 C 370 70, 370 67, 370 102 C 370 136, 370 135, 371 141 C 376 167, 403 181, 429 172 C 434 170, 436 169, 442 165 C 445 163, 446 164, 446 167 C 447 172, 447 172, 461 172 C 474 172, 475 172, 475 169 C 476 167, 476 71, 475 70 C 474 68, 474 68, 460 68 C 442 68, 444 64, 444 98 C 444 128, 444 126, 443 131 C 436 150, 410 153, 403 135 C 401 130, 401 130, 401 99 C 401 68, 401 70, 399 69 C 398 68, 373 68, 372 69 M 909 89 C 900 90, 890 99, 890 107 C 890 110, 889 110, 914 110 C 940 110, 939 110, 937 104 C 933 93, 921 87, 909 89 M 784 92 C 756 97, 757 144, 785 148 C 804 151, 818 134, 814 114 C 811 98, 798 89, 784 92 M 545 128 C 530 129, 525 131, 524 139 C 522 156, 552 158, 561 141 C 563 137, 564 131, 562 130 C 561 128, 560 128, 545 128';
 const STAR = 'M730 490 L735 576 L763.9 554.1 L742 583 L828 588 L742 593 L763.9 621.9 L735 600 L730 686 L725 600 L696.1 621.9 L718 593 L632 588 L718 583 L696.1 554.1 L725 576 Z';
 
-export const SIGNAL_GREY = '#8B96A0';
-
 /** Colour sets for standalone (non-themed) files. Match the site's palette. */
-export const ON_LIGHT = { ink: '#2A303B', accent: '#0B7A5F' };
-export const ON_DARK = { ink: '#EDF1F4', accent: '#35D0A5' };
+export const ON_LIGHT = { ink: '#2A303B', accent: '#0B7A5F', signal: '#5E6C75' };
+export const ON_DARK = { ink: '#EDF1F4', accent: '#35D0A5', signal: '#8A98A3' };
 /** Themed: follows the page's light/dark via CSS. */
-export const THEMED = { ink: 'currentColor', accent: 'var(--accent)' };
+export const THEMED = { ink: 'currentColor', accent: 'var(--accent)', signal: 'var(--ink-faint)' };
 
 /** viewBoxes, in master coordinates */
 export const VB_MARK = '200 214 855 622';
 export const VB_STACKED = '195 214 865 846';
-export const VB_H = '200 214 2455 622';
+export const VB_H = '200 214 2322 622';
 
 const fill = (c) => `style="fill:${c}"`;
 
 /** The Q-with-orbit mark, master coordinates. */
-export const markBody = ({ ink, accent }) =>
+export const markBody = ({ ink, accent, signal }) =>
   `<path ${fill(ink)} fill-rule="evenodd" d="${RING}"/>` +
-  `<path ${fill(SIGNAL_GREY)} fill-rule="evenodd" d="${SIGNAL}"/>` +
+  `<path ${fill(signal)} fill-rule="evenodd" d="${SIGNAL}"/>` +
   `<path ${fill(accent)} fill-rule="evenodd" d="${ORBIT}"/>` +
   `<path ${fill(accent)} d="${STAR}"/><circle cx="730" cy="588" r="15" ${fill(accent)}/>`;
 
@@ -45,7 +44,7 @@ export const stackedBody = (c) => markBody(c) + wordBody(c);
 /** Horizontal lockup (mark, then wordmark centred on the mark) — for nav/footer. */
 export const horizontalBody = (c) =>
   markBody(c) +
-  `<g transform="translate(1157 525) scale(1.75) translate(-203 -950)">${wordBody(c)}</g>`;
+  `<g transform="translate(1157 525) scale(1.6) translate(-203 -950)">${wordBody(c)}</g>`;
 
 /** Standalone SVG document. */
 export const svgDoc = (viewBox, body, { ground } = {}) => {
