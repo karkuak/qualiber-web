@@ -291,9 +291,10 @@ body {
 .team-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
 @media (min-width: 901px) { .team-grid > div:first-child { position: sticky; top: 110px; } }
 @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr; } }
+.person-name { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; margin: 0.4rem 0 0; }
+.bio .person-role { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin: 0.5rem 0 1.5rem; }
 .bio p { color: var(--ink-soft); font-size: 1.04rem; margin: 0 0 1.3rem; max-width: 62ch; }
 .person + .person { margin-top: clamp(2.2rem, 4vw, 3.2rem); padding-top: clamp(2.2rem, 4vw, 3.2rem); border-top: 1px solid var(--rule); }
-.bio-label { font-family: var(--font-mono); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin: 0.5rem 0 1.4rem; }
 
 /* ---------- CONTACT ---------- */
 .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem,5vw,4rem); align-items: start; }
