@@ -1,10 +1,10 @@
 # Qualiber — website
 
-Marketing site for **Qualiber LLC** and its first product, **Qualgraph**. Live at
-[qualiber.ai](https://qualiber.ai).
+Marketing site for **Qualiber LLC** and its products — **Qualgraph**, **Warrant** and
+**Reality Lab**. Live at [qualiber.ai](https://qualiber.ai).
 
-Built with [Astro](https://astro.build). Single landing page + a privacy page,
-statically generated. The only server-side code is one small Cloudflare Pages Function
+Built with [Astro](https://astro.build). A single-page company site (About, Our Products, Our Approach,
+Our Team, Contact), a Qualgraph product page and a privacy page, statically generated. The only server-side code is one small Cloudflare Pages Function
 (the `www` → apex redirect, see [Domains](#domains)).
 
 ---
@@ -26,11 +26,17 @@ Node 22 (see `.nvmrc`).
 src/
   layouts/Base.astro          # <head>, SEO/OpenGraph meta, no-flash theme script, logo sprite
   components/
+    SiteNav.astro             # sticky nav + mobile menu (home={true} on the home page)
+    SiteFooter.astro
     Logo.astro                # the Qualiber logo (<Logo /> lockup, <Logo variant="mark" />)
     LogoSprite.astro          # the logo's shapes, emitted once per page and <use>d by Logo
+    home/                     # one component per home-page section, in page order:
+      Hero, About, Products, Approach, Team, Contact
+  scripts/                    # client behaviour (nav + theme, reveal, demo form, Qualgraph graph)
   lib/logo.mjs                # logo artwork — single source of truth (see "Logo")
   pages/
-    index.astro               # the landing page (all sections + client scripts)
+    index.astro               # home page: assembles the section components
+    qualgraph.astro           # Qualgraph product page (hero, principles, "the gap")
     privacy.astro             # privacy policy (required — the form collects emails)
     404.astro
   styles/global.css           # design tokens + all component styles (light + dark)
@@ -129,7 +135,7 @@ policy in the same change.
 
 ## Company / legal notes
 
-- Footer attributes the product to **Qualiber LLC** and marks **Qualgraph™** (™ is fine
-  pre-registration; use ® only after a granted USPTO mark).
+- The footer carries only the © Qualiber LLC line (the Qualgraph™ product attribution was removed
+  when the site became a company page). ™ is fine pre-registration; use ® only after a granted USPTO mark.
 - Register/hold `qualiber.ai` under the LLC with WHOIS privacy.
 - **Do not** add a "Patent pending" line until a provisional is actually filed.

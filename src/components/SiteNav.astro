@@ -1,0 +1,44 @@
+---
+import Logo from './Logo.astro';
+
+/** home: anchors are on this page; otherwise they point back to the home page. */
+interface Props { home?: boolean }
+const { home = false } = Astro.props;
+const base = home ? '' : '/';
+const links = [
+  { href: `${base}#about`, label: 'About Qualiber' },
+  { href: `${base}#products`, label: 'Our Products' },
+  { href: `${base}#approach`, label: 'Our Approach' },
+  { href: `${base}#team`, label: 'Our Team' },
+];
+const demo = `${base}#contact`;
+---
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href={home ? '#top' : '/'}>
+      <Logo />
+    </a>
+    <div class="nav-links">
+      {links.map((l) => <a class="nav-link" href={l.href}>{l.label}</a>)}
+      <a class="nav-cta" href={demo}>Request a demo</a>
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle color theme" title="Toggle theme">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+      </button>
+      <button class="theme-toggle nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+    </div>
+  </div>
+  <div class="nav-menu" id="navMenu" hidden>
+    <div class="wrap nav-menu-inner">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      <a class="nav-menu-cta" href={demo}>Request a demo →</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  import { initNav } from '../scripts/nav';
+  initNav();
+</script>

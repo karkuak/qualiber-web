@@ -1,0 +1,74 @@
+---
+// Qualgraph product page — the original single-product hero, principles strip and
+// "the gap" section, moved here from the home page.
+import Base from '../layouts/Base.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<Base
+  title="Qualgraph — Qualiber"
+  description="Qualgraph turns the test, telemetry, and review signals your team already produces into evidence-backed briefs — so every quality call is grounded in what actually happened, not what someone assumed."
+  path="/qualgraph"
+>
+  <SiteNav />
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Qualgraph — a Qualiber product</span>
+          <h1>Quality isn't whether the tests passed. It's whether the <em>decision</em> was sound.</h1>
+          <p class="lede">Qualgraph turns the test, telemetry, and review signals your team already produces into <b>evidence-backed briefs</b> — so every quality call is grounded in what actually happened, not what someone assumed.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/#contact">Request a demo →</a>
+            <a class="btn btn-ghost" href="/#products">← All products</a>
+          </div>
+        </div>
+        <div class="hero-panel" id="panel">
+          <span class="panel-tag"><span class="dot">●</span> signal → verdict</span>
+          <canvas id="graph" aria-hidden="true"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="wrap strip-grid">
+        <div class="strip-item">
+          <div class="strip-k">Grounded</div>
+          <div class="strip-v">Every claim is <b>assembled from your real signals</b> and cites them. No signal, no claim.</div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-k">Honest</div>
+          <div class="strip-v">What can't be shown is reported as <b>absence</b> — never guessed, never inflated.</div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-k">Defensible</div>
+          <div class="strip-v">A brief you can <b>stand behind in a review</b>, an audit, or a postmortem.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap gap-grid reveal">
+        <div>
+          <span class="eyebrow">The gap</span>
+          <h2>A green checkmark is not a <em>verdict</em>.</h2>
+          <p class="body">Tests tell you a suite passed. Dashboards tell you coverage moved a point. Neither tells you whether the decision to ship — or to sign off — was <i>faithful to the evidence in front of it</i>.</p>
+          <p class="body">The hardest questions in QA all live in that gap. They're the ones that surface after release, in the retro, when someone asks how it got through.</p>
+        </div>
+        <ul class="faillist" aria-label="Questions testing alone can't answer">
+          <li><span class="q">Q_01</span><span>Did the review actually <b>weigh what the data already knew?</b></span></li>
+          <li><span class="q">Q_02</span><span>Which signals were <b>present but never considered?</b></span></li>
+          <li><span class="q">Q_03</span><span>Where did the call <b>drift from the evidence</b> — and why?</span></li>
+          <li><span class="q">Q_04</span><span>Could you <b>reconstruct the reasoning</b> six months from now?</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
+
+<script>
+  import { initSignalGraph } from '../scripts/signal-graph';
+  initSignalGraph();
+</script>

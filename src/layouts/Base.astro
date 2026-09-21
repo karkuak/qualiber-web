@@ -11,7 +11,7 @@ export interface Props {
 
 const {
   title = 'Qualiber — Evidence-backed quality',
-  description = 'Qualiber builds independent proof for AI-era software. Its first product, Qualgraph, turns the test, telemetry, and review signals your team already produces into evidence-backed quality briefs.',
+  description = 'Qualiber builds software and tools that help teams assess the quality of applications and AI systems, understand the risks, and make informed decisions.',
   path = '/',
 } = Astro.props;
 
@@ -45,14 +45,14 @@ const ogImage = new URL('/og.png', site).href;
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Qualiber — Quality isn't whether the tests passed. It's whether the decision was sound." />
+    <meta property="og:image:alt" content="Qualiber builds software and tools that help teams assess the quality of applications and AI systems, understand the risks, and make informed decisions." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Qualiber — Quality isn't whether the tests passed. It's whether the decision was sound." />
+    <meta name="twitter:image:alt" content="Qualiber builds software and tools that help teams assess the quality of applications and AI systems, understand the risks, and make informed decisions." />
 
     <!-- Apply saved theme before paint to avoid a flash -->
     <script is:inline>
@@ -71,3 +71,8 @@ const ogImage = new URL('/og.png', site).href;
     <slot />
   </body>
 </html>
+
+<script>
+  import { initReveal } from '../scripts/reveal';
+  initReveal();
+</script>
