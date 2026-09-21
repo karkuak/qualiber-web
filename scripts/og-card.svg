@@ -29,51 +29,26 @@
   <!-- top accent hairline -->
   <rect x="0" y="0" width="1200" height="4" fill="#35D0A5"/>
 
-  <!-- ============ RIGHT: signal -> brief graph ============ -->
-  <g>
-    <!-- edges to brief node (1030, 315) -->
-    <g stroke="url(#edge)" stroke-width="1.6">
-      <line x1="812" y1="150" x2="1030" y2="315"/>
-      <line x1="792" y1="232" x2="1030" y2="315"/>
-      <line x1="812" y1="315" x2="1030" y2="315"/>
-      <line x1="792" y1="398" x2="1030" y2="315"/>
-      <line x1="812" y1="480" x2="1030" y2="315"/>
-    </g>
-
-    <!-- signal nodes + labels -->
-    <g font-family="ui-monospace, Menlo, monospace" font-size="17" fill="#A2B0BB">
-      <circle cx="812" cy="150" r="5" fill="#A2B0BB"/><text x="798" y="155" text-anchor="end">test</text>
-      <circle cx="792" cy="232" r="5" fill="#A2B0BB"/><text x="778" y="237" text-anchor="end">telemetry</text>
-      <circle cx="812" cy="315" r="5" fill="#A2B0BB"/><text x="798" y="320" text-anchor="end">review</text>
-      <circle cx="792" cy="398" r="5" fill="#A2B0BB"/><text x="778" y="403" text-anchor="end">coverage</text>
-      <circle cx="812" cy="480" r="5" fill="#A2B0BB"/><text x="798" y="485" text-anchor="end">trace</text>
-    </g>
-
-    <!-- brief node (resolved) -->
-    <circle cx="1030" cy="315" r="60" fill="url(#glow)"/>
-    <circle cx="1030" cy="315" r="16" fill="#35D0A5"/>
-    <path d="M1023 315 l5 6 l9 -11" fill="none" stroke="#171F29" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="1030" y="360" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="17" fill="#35D0A5">brief</text>
-  </g>
+  <!-- ============ RIGHT: logo mark (injected by build-og.mjs from src/lib/logo.mjs) ============ -->
+  {{LOGO_MARK}}
 
   <!-- ============ LEFT: wordmark + thesis ============ -->
   <!-- brand lockup (injected by build-og.mjs from src/lib/logo.mjs) -->
   {{LOGO_H}}
 
-  <!-- eyebrow -->
-  <text x="80" y="182" font-family="ui-monospace, Menlo, monospace" font-size="18" fill="#A2B0BB" letter-spacing="3">QUALGRAPH · BY QUALIBER</text>
-
-  <!-- thesis headline -->
-  <g font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#EDF1F4">
-    <text x="78" y="258">Quality isn&#8217;t whether</text>
-    <text x="78" y="326">the tests passed. It&#8217;s</text>
-    <text x="78" y="394">whether the <tspan font-style="italic" fill="#35D0A5">decision</tspan></text>
-    <text x="78" y="462">was sound.</text>
+  <!-- company statement (matches the site hero) -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="47" fill="#EDF1F4">
+    <text x="78" y="190"><tspan font-style="italic" fill="#35D0A5">Qualiber</tspan> builds software and</text>
+    <text x="78" y="250">tools that help teams <tspan font-style="italic" fill="#35D0A5">assess</tspan></text>
+    <text x="78" y="310">the quality of applications</text>
+    <text x="78" y="370">and AI systems, understand</text>
+    <text x="78" y="430">the risks, and make</text>
+    <text x="78" y="490"><tspan font-style="italic" fill="#35D0A5">informed decisions</tspan>.</text>
   </g>
 
   <!-- tagline -->
-  <text x="80" y="536" font-family="ui-monospace, Menlo, monospace" font-size="19" fill="#66757F" letter-spacing="1.5">Evidence-backed quality briefs.</text>
+  <text x="80" y="548" font-family="ui-monospace, Menlo, monospace" font-size="19" fill="#66757F" letter-spacing="1.5">Instruments for quality that holds up.</text>
 
   <!-- url -->
-  <text x="80" y="588" font-family="ui-monospace, Menlo, monospace" font-size="19" fill="#35D0A5" letter-spacing="1.5">qualiber.ai</text>
+  <text x="80" y="592" font-family="ui-monospace, Menlo, monospace" font-size="19" fill="#35D0A5" letter-spacing="1.5">qualiber.ai</text>
 </svg>
