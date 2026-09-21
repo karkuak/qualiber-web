@@ -1,7 +1,7 @@
 # Qualiber — website
 
-Marketing site for **Qualiber LLC** and its first product, **Qualgraph**. Live at
-[qualiber.ai](https://qualiber.ai).
+Marketing site for **Qualiber LLC** and its products — **Qualgraph**, **Warrant** and
+**Reality Lab**. Live at [qualiber.ai](https://qualiber.ai).
 
 Built with [Astro](https://astro.build). A single-page company site (About, Our Products, Our Approach,
 Our Team, Contact), a Qualgraph product page and a privacy page, statically generated. The only server-side code is one small Cloudflare Pages Function
