@@ -4,7 +4,8 @@ Marketing site for **Qualiber LLC** and its first product, **Qualgraph**. Live a
 [qualiber.ai](https://qualiber.ai).
 
 Built with [Astro](https://astro.build). Single landing page + a privacy page,
-statically generated, no server required.
+statically generated. The only server-side code is one small Cloudflare Pages Function
+(the `www` → apex redirect, see [Domains](#domains)).
 
 ---
 
@@ -17,81 +18,112 @@ npm run build      # static output → ./dist
 npm run preview    # serve the built ./dist locally
 ```
 
+Node 22 (see `.nvmrc`).
+
 ## Project structure
 
 ```
 src/
-  layouts/Base.astro     # <head>, SEO/OpenGraph meta, no-flash theme script
+  layouts/Base.astro          # <head>, SEO/OpenGraph meta, no-flash theme script, logo sprite
+  components/
+    Logo.astro                # the Qualiber logo (<Logo /> lockup, <Logo variant="mark" />)
+    LogoSprite.astro          # the logo's shapes, emitted once per page and <use>d by Logo
+  lib/logo.mjs                # logo artwork — single source of truth (see "Logo")
   pages/
-    index.astro          # the landing page (all sections + client scripts)
-    privacy.astro        # privacy policy (required — the form collects emails)
+    index.astro               # the landing page (all sections + client scripts)
+    privacy.astro             # privacy policy (required — the form collects emails)
     404.astro
-  styles/global.css      # design tokens + all component styles (light + dark)
-public/
-  favicon.svg
-  robots.txt
-  og.png                 # 1200×630 social share image  ← ADD THIS (see below)
+  styles/global.css           # design tokens + all component styles (light + dark)
+functions/
+  _middleware.js              # Cloudflare Pages Function: www.qualiber.ai → qualiber.ai (301)
+public/                       # served as-is; the logo/icon/social files here are generated (below)
+scripts/                      # asset generators + their SVG sources
 ```
 
 ## Design system — "Instrument for quality"
 
 - **Neutrals:** cool slate, biased toward the accent (not default grey).
-- **Accent:** a single jade — `#35D0A5` (dark) / `#0F9E7C` (light). Used sparingly.
+- **Accent:** a single jade — `#35D0A5` (dark) / `#0B7A5F` (light), as `--accent`. Used sparingly.
 - **Type:** Georgia serif (display) + monospace (utility/telemetry) + system sans (body).
 - Fully themed for light & dark via CSS custom properties; user toggle persists in
   `localStorage` and applies before paint.
 
----
+## Logo
 
-## Go-live runbook (the account/DNS steps)
+The logo is vector artwork traced from the brand master, kept in **`src/lib/logo.mjs`**
+(ring, zigzag, orbit, sparkle and the "Qualiber" wordmark). Colours are parameters, so one
+artwork serves every ground:
 
-These require your own accounts and the domain registrar login, so they're done by
-hand. Everything is free unless noted.
+- **On the site** the ring/wordmark follow the theme (`currentColor`), the orbit follows
+  `--accent`, and the zigzag follows `--ink-faint` — so the logo always matches the page and
+  a palette change flows through with no logo edit.
+- **In standalone files** (icons, social images) the matching fixed hex colours are used
+  (`ON_LIGHT` / `ON_DARK` in `logo.mjs`).
 
-### 1. Wire up the form (Formspree)
+`<LogoSprite />` (in `Base.astro`) emits the shapes once per page; `<Logo />` references them.
+Nav/footer use the horizontal lockup at 52px tall (40px on mobile) — the mark's fine detail
+blurs below roughly that size, so don't shrink it.
 
-1. Create a free account at [formspree.io](https://formspree.io).
-2. New form → copy its endpoint, e.g. `https://formspree.io/f/abcdwxyz`.
-3. In `src/pages/index.astro`, replace `FORMSPREE_ENDPOINT`'s
-   `https://formspree.io/f/YOUR_FORM_ID` with your endpoint.
-4. In Formspree, set the notification email to **hello@qualiber.ai** (step 4 below).
+To swap in new artwork, replace the path constants in `src/lib/logo.mjs`.
 
-The form submits via AJAX and stays on-page; a honeypot field (`_gotcha`) filters bots.
+### Regenerating brand assets
 
-### 2. Push to GitHub
+Everything in `public/` derived from the logo is generated from `logo.mjs`; run after changing it:
 
 ```bash
-git init && git add -A && git commit -m "Qualiber site — initial"
-gh repo create qualiber-web --private --source=. --push   # or create via github.com
+node scripts/build-logo.mjs       # favicon.svg + qualiber-mark / qualiber-logo (light + on-dark) SVGs
+node scripts/build-icons.mjs      # favicon-32.png, apple-touch-icon.png, icon-512.png
+node scripts/build-og.mjs         # og.png (1200×630 social card; source: scripts/og-card.svg)
+node scripts/build-linkedin.mjs   # LinkedIn logos (dark + light) and the cover banner
 ```
 
-### 3. Deploy on Cloudflare Pages
+These use [`sharp`](https://sharp.pixelplumbing.com), which is installed as a dependency of
+Astro — no extra install needed.
 
-1. Create a [Cloudflare](https://dash.cloudflare.com) account.
-2. **Add a site** → `qualiber.ai`. Cloudflare gives you two nameservers — set these
-   at your domain registrar (where you bought qualiber.ai). Propagation: minutes–hours.
-3. **Workers & Pages → Create → Pages → Connect to Git** → pick `qualiber-web`.
-   - Framework preset: **Astro**
-   - Build command: `npm run build`
-   - Output directory: `dist`
-4. Deploy. You'll get a `*.pages.dev` preview URL immediately.
-5. **Custom domains** (in the Pages project) → add `qualiber.ai` and `www.qualiber.ai`.
-   Cloudflare wires the DNS automatically since the domain is on your account.
+---
 
-Every `git push` to the main branch now redeploys automatically.
+## Deployment
 
-### 4. Email — hello@qualiber.ai (Cloudflare Email Routing)
+The site is a **Cloudflare Pages** project named `qualiber-web`, connected to
+[`karkuak/qualiber-web`](https://github.com/karkuak/qualiber-web) through Cloudflare's
+GitHub integration (there is no GitHub Actions workflow).
 
-1. In Cloudflare → **Email → Email Routing** → enable.
-2. Add a route: `hello@qualiber.ai` → your personal inbox (e.g. Gmail). Confirm the
-   verification email Cloudflare sends to that inbox.
-3. (Optional, for sending *as* hello@qualiber.ai) set up Gmail "Send mail as" with an
-   app password, or upgrade to Google Workspace later.
+- **Production:** every push/merge to `main` builds (`npm run build`, output `dist`) and
+  publishes to qualiber.ai.
+- **Previews:** every other branch and PR builds automatically. A Cloudflare comment on the PR
+  links the branch preview at `https://<branch-with-dashes>.qualiber-web.pages.dev` (e.g.
+  `website/logo-update` → `website-logo-update.qualiber-web.pages.dev`) and a per-commit
+  snapshot URL. The per-commit URL is frozen to that commit; the branch URL always tracks the
+  latest push.
+- `main` is not branch-protected — work on a branch and merge via PR.
+- If a preview doesn't appear after a push, retrigger it with an empty commit
+  (`git commit --allow-empty`); a push has been missed before.
 
-### 5. Social share image (og.png)
+### Domains
 
-Drop a **1200×630 PNG** at `public/og.png` so links unfurl with a branded card on
-Slack / X / LinkedIn. (Ask and this can be generated to match the site.)
+- `qualiber.ai` (canonical) and `www.qualiber.ai` are both attached to the Pages project, and
+  DNS is on Cloudflare.
+- `functions/_middleware.js` 301-redirects `www` → `qualiber.ai` (path and query kept), so the
+  site has one address. `astro.config.mjs` `site`, the canonical tags and the sitemap all use
+  the apex. Other hosts, including `*.pages.dev` previews, pass straight through.
+
+### Contact form (Formspree)
+
+The demo form in `src/pages/index.astro` (`FORMSPREE_ENDPOINT`) posts to a Formspree form and
+stays on-page; a honeypot field (`_gotcha`) filters bots. Submissions are emailed to the
+address set in the Formspree form settings. The privacy page names Formspree as the processor —
+keep it in sync if the form provider changes.
+
+### Email — hello@qualiber.ai
+
+Mail for `qualiber.ai` is hosted on **Zoho** (the domain's MX, SPF and verification records
+point at Zoho). It is *not* Cloudflare Email Routing. Manage the mailbox and any aliases in
+Zoho; manage DNS records in Cloudflare.
+
+### Analytics
+
+There is none, and `privacy.astro` says so. If analytics are ever added, update the privacy
+policy in the same change.
 
 ---
 

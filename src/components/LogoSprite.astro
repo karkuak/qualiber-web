@@ -1,0 +1,15 @@
+---
+/**
+ * Qualiber logo sprite — rendered once per page (see Base.astro) and
+ * referenced by <Logo /> via <use>, so the path data isn't repeated for
+ * every placement. The ring and wordmark use currentColor, so they follow
+ * the theme, and the orbit uses the site's --accent, so the logo always matches the
+ * rest of the page.
+ * (Sized 0×0 rather than display:none so browsers keep the symbols renderable.)
+ */
+import { VB_MARK, VB_H, THEMED, markBody, horizontalBody } from '../lib/logo.mjs';
+---
+<svg width="0" height="0" style="position:absolute" shape-rendering="geometricPrecision" aria-hidden="true" focusable="false">
+  <symbol id="qb-mark" viewBox={VB_MARK} set:html={markBody(THEMED)} />
+  <symbol id="qb-logo-h" viewBox={VB_H} set:html={horizontalBody(THEMED)} />
+</svg>
