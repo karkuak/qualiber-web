@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import Logo from '../components/Logo.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 ---
 
 <Base
@@ -8,18 +9,8 @@ import Logo from '../components/Logo.astro';
   description="How Qualiber LLC handles information submitted through qualiber.ai."
   path="/privacy"
 >
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="/">
-        <Logo />
-      </a>
-      <div class="nav-links">
-        <a href="/">← Back to site</a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="wrap prose">
+  <SiteNav />
+  <main id="main" class="wrap prose">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
     <p class="updated">Last updated: 20 July 2026</p>
@@ -46,4 +37,5 @@ import Logo from '../components/Logo.astro';
 
     <p style="margin-top:2.5rem;"><a class="backlink" href="/">← Back to qualiber.ai</a></p>
   </main>
+  <SiteFooter />
 </Base>

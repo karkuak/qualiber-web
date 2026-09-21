@@ -1,0 +1,49 @@
+---
+// Formspree endpoint for the demo-request form.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeeykpae';
+---
+<section class="section" id="contact">
+  <div class="wrap contact-grid reveal">
+    <div class="contact-side">
+      <span class="eyebrow">Get in touch</span>
+      <h2>See Qualgraph on <em>your</em> signals.</h2>
+      <p class="body">Tell us a little about your team and the quality problem you're wrestling with. We'll set up a walkthrough grounded in the kind of evidence you actually work with.</p>
+      <div class="contact-meta">
+        <div>→ Live demo, tailored to your stack</div>
+        <div>→ No obligation, no slide deck</div>
+        <div><a href="mailto:hello@qualiber.ai">hello@qualiber.ai</a></div>
+      </div>
+    </div>
+    <form class="form" id="demoForm" method="POST" action={FORMSPREE_ENDPOINT} novalidate>
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="f-email">Work email</label>
+        <input id="f-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="f-company">Company</label>
+        <input id="f-company" name="company" type="text" placeholder="Company name" autocomplete="organization" />
+      </div>
+      <div class="field">
+        <label for="f-msg">What quality problem are you wrestling with? <span class="opt">(optional)</span></label>
+        <textarea id="f-msg" name="message" placeholder="A sentence or two is plenty."></textarea>
+      </div>
+      <!-- honeypot: bots fill this, humans never see it -->
+      <div class="hp" aria-hidden="true">
+        <label for="f-website">Leave this field empty</label>
+        <input id="f-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <button class="btn btn-primary" type="submit">Request a demo →</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+      <p class="form-note" id="formNote">We reply from hello@qualiber.ai — usually within a day.</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  import { initDemoForm } from '../../scripts/demo-form';
+  initDemoForm();
+</script>
