@@ -1,0 +1,18 @@
+---
+/**
+ * Qualiber logo. Requires <LogoSprite /> on the page (Base.astro includes it).
+ *   variant="lockup" — mark + wordmark, horizontal (nav, footer)
+ *   variant="mark"   — the Q mark alone
+ */
+interface Props { variant?: 'lockup' | 'mark'; class?: string }
+const { variant = 'lockup', class: cls = 'logo' } = Astro.props;
+const lockup = variant === 'lockup';
+---
+<svg
+  class={cls}
+  viewBox={lockup ? '200 214 2455 622' : '200 214 855 622'}
+  role="img"
+  aria-label="Qualiber"
+>
+  <use href={lockup ? '#qb-logo-h' : '#qb-mark'}></use>
+</svg>

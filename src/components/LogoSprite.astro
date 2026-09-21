@@ -1,0 +1,16 @@
+---
+/**
+ * Qualiber logo sprite — rendered once per page (see Base.astro) and
+ * referenced by <Logo /> via <use>, so the path data isn't repeated for
+ * every placement. The ring and wordmark use currentColor, so they follow
+ * the theme; the orbit keeps its brand greens.
+ * (Sized 0×0 rather than display:none — gradients inside a display:none
+ * <svg> don't render in Chromium.)
+ */
+import { VB_MARK, VB_H, gradient, markBody, horizontalBody } from '../lib/logo.mjs';
+---
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs set:html={gradient('qb-g')} />
+  <symbol id="qb-mark" viewBox={VB_MARK} set:html={markBody('currentColor', 'qb-g')} />
+  <symbol id="qb-logo-h" viewBox={VB_H} set:html={horizontalBody('currentColor', 'qb-g')} />
+</svg>
