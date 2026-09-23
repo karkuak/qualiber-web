@@ -4,8 +4,9 @@ Marketing site for **Qualiber LLC** and its products — **Qualgraph**, **Warran
 **Reality Lab**. Live at [qualiber.ai](https://qualiber.ai).
 
 Built with [Astro](https://astro.build). A single-page company site (About, Our Products, Our Approach,
-Our Team, Contact), a Qualgraph product page and a privacy page, statically generated. The only server-side code is one small Cloudflare Pages Function
-(the `www` → apex redirect, see [Domains](#domains)).
+Our Team, Contact), a Qualgraph product page and a privacy page, statically generated. The only server-side code is two small Cloudflare Pages Functions
+(the `www` → apex redirect, see [Domains](#domains), and the contact-form relay, see
+[Contact form](#contact-form)).
 
 ---
 
@@ -42,8 +43,9 @@ src/
   styles/global.css           # design tokens + all component styles (light + dark)
 functions/
   _middleware.js              # Cloudflare Pages Function: www.qualiber.ai → qualiber.ai (301)
+  api/contact.js              # POST /api/contact: validates and relays the demo form to Formspree
 public/                       # served as-is; the logo/icon/social files here are generated (below)
-scripts/                      # asset generators + their SVG sources
+scripts/                      # asset generators + their SVG sources; test-contact.mjs
 ```
 
 ## Design system — "Instrument for quality"
@@ -129,12 +131,25 @@ new third-party host (analytics, a form provider…), add it to `connect-src` / 
 and update the privacy policy. Headers only apply on Cloudflare — check them on the branch preview
 (`curl -I`) and watch the browser console for CSP violations; `astro dev` does not send them.
 
-### Contact form (Formspree)
+### Contact form
 
-The demo form in `src/pages/index.astro` (`FORMSPREE_ENDPOINT`) posts to a Formspree form and
-stays on-page; a honeypot field (`_gotcha`) filters bots. Submissions are emailed to the
-address set in the Formspree form settings. The privacy page names Formspree as the processor —
-keep it in sync if the form provider changes.
+The demo form in `src/components/home/Contact.astro` posts to **our own** `/api/contact`
+(`functions/api/contact.js`, a Pages Function), which forwards the message to Formspree
+server-side. The page therefore never points a form at a third-party domain (a pattern that
+security tools treat as suspicious on a young domain), and the CSP has `connect-src 'self'`.
+
+- Formspree is still the processor that emails submissions to us; the privacy page names it.
+- The function only accepts same-origin POSTs, forwards only `name`/`email`/`company`/`message`
+  (trimmed, length-capped), and silently drops honeypot (`_gotcha`) hits.
+- It never loses a lead silently: if Formspree fails it answers 502 and the page tells the visitor to
+  email hello@qualiber.ai (their typed text is kept). It never logs submitted data.
+- The Formspree endpoint is a constant in the function; set the `FORMSPREE_ENDPOINT` environment
+  variable in Cloudflare Pages to override it.
+- **Test after any change:** `node scripts/test-contact.mjs` (15 checks, Formspree mocked). To drive
+  the real form locally without sending anything, run
+  `npx wrangler pages dev dist --binding FORMSPREE_ENDPOINT=http://127.0.0.1:<port>/f/mock` against a
+  throwaway mock server. Don't test with the real endpoint unless you mean to email yourself.
+- Not rate-limited in code; add a Cloudflare rate-limiting rule for `/api/contact` if spam appears.
 
 ### Email — hello@qualiber.ai
 
