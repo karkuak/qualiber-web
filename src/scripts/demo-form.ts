@@ -1,6 +1,5 @@
-// Demo-request form: AJAX submit to Formspree, stays on the page.
+// Demo-request form: AJAX submit to our own /api/contact (which relays to Formspree), stays on the page.
 export function initDemoForm() {
-  // ── demo form (Formspree AJAX) ───────────────────────────────────────────
   const form = document.getElementById('demoForm') as HTMLFormElement | null;
   const statusEl = document.getElementById('formStatus');
   const noteEl = document.getElementById('formNote');
@@ -15,10 +14,6 @@ export function initDemoForm() {
       statusEl.hidden = false;
     };
 
-    if (action.includes('YOUR_FORM_ID')) {
-      show('Demo mode — connect a Formspree endpoint to go live.', false);
-      return;
-    }
     const email = (form.querySelector('#f-email') as HTMLInputElement)?.value.trim();
     const name = (form.querySelector('#f-name') as HTMLInputElement)?.value.trim();
     if (!name || !email) { show('Please add your name and work email.', false); return; }
