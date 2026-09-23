@@ -113,6 +113,22 @@ GitHub integration (there is no GitHub Actions workflow).
   site has one address. `astro.config.mjs` `site`, the canonical tags and the sitemap all use
   the apex. Other hosts, including `*.pages.dev` previews, pass straight through.
 
+### Security headers
+
+`public/_headers` sets HSTS, a strict Content-Security-Policy, `X-Frame-Options`, `Permissions-Policy`
+and `Cross-Origin-Opener-Policy` on every response (Cloudflare Pages applies it to static files; the
+`www` redirect in `functions/_middleware.js` sets its own HSTS header). `/.well-known/security.txt`
+gives a security contact. The CSP is `script-src 'self'; style-src 'self'`, which only works because:
+
+- the build never inlines scripts or styles (`astro.config.mjs`: `inlineStylesheets: 'never'`,
+  `assetsInlineLimit: 0`), and
+- the pre-paint theme script is the static file `public/theme-init.js`, not an inline `<script>`.
+
+So: don't add inline `<script>`/`<style>` blocks (put code in a module under `src/scripts/`). To allow a
+new third-party host (analytics, a form provider…), add it to `connect-src` / `script-src` in `_headers`
+and update the privacy policy. Headers only apply on Cloudflare — check them on the branch preview
+(`curl -I`) and watch the browser console for CSP violations; `astro dev` does not send them.
+
 ### Contact form (Formspree)
 
 The demo form in `src/pages/index.astro` (`FORMSPREE_ENDPOINT`) posts to a Formspree form and

@@ -11,7 +11,15 @@ export async function onRequest({ request, next }) {
   if (url.hostname === `www.${CANONICAL_HOST}`) {
     url.hostname = CANONICAL_HOST;
     url.protocol = 'https:';
-    return Response.redirect(url.toString(), 301);
+    // Built by hand (not Response.redirect) so the redirect can carry HSTS —
+    // Pages' _headers file doesn't apply to Function responses.
+    return new Response(null, {
+      status: 301,
+      headers: {
+        Location: url.toString(),
+        'Strict-Transport-Security': 'max-age=15552000',
+      },
+    });
   }
   return next();
 }

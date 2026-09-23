@@ -7,6 +7,11 @@ export default defineConfig({
   site: 'https://qualiber.ai',
   integrations: [sitemap()],
   build: {
-    inlineStylesheets: 'auto',
+    // Never inline CSS or JS into the HTML: keeps the Content-Security-Policy in
+    // public/_headers strict (script-src 'self', style-src 'self') with no hashes to maintain.
+    inlineStylesheets: 'never',
+  },
+  vite: {
+    build: { assetsInlineLimit: 0 },
   },
 });
