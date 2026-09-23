@@ -30,5 +30,5 @@ export function initNav() {
     if (!menu.hidden && !(e.target as HTMLElement).closest('.nav')) setOpen(false);
   });
   // Leaving the mobile breakpoint: make sure the panel isn't left open.
-  matchMedia('(min-width: 901px)').addEventListener('change', (m) => { if (m.matches) setOpen(false); });
+  matchMedia('(min-width: 1101px)').addEventListener('change', (m) => { if (m.matches) setOpen(false); });
 }

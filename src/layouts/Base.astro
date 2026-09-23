@@ -54,17 +54,8 @@ const ogImage = new URL('/og.png', site).href;
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content="Qualiber builds software and tools that help teams assess the quality of applications and AI systems, understand the risks, and make informed decisions." />
 
-    <!-- Apply saved theme before paint to avoid a flash -->
-    <script is:inline>
-      (function () {
-        try {
-          var t = localStorage.getItem('qb-theme');
-          if (t === 'light' || t === 'dark') {
-            document.documentElement.setAttribute('data-theme', t);
-          }
-        } catch (e) {}
-      })();
-    </script>
+    <!-- Apply saved theme before paint to avoid a flash (external, so the CSP needs no inline-script allowance) -->
+    <script is:inline src="/theme-init.js"></script>
   </head>
   <body>
     <LogoSprite />
